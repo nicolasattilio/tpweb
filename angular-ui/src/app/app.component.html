@@ -1,0 +1,83 @@
+<div>
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" (click)="goToHome()">Drink App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Drink App</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item" *ngIf="!userLog">
+              <a class="nav-link" (click)="goToLogIn()">Ingresar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="goToShowDrinks()">Ver todas las bebidas</a>
+            </li>
+            <li class="nav-item" *ngIf="!userLog">
+              <a class="nav-link" (click)="goToAboutUs()">¿Quienes somos?</a>
+            </li>
+            <li class="nav-item" *ngIf="userLog">
+              <a class="nav-link" (click)="addDrink()">Agregar bebida</a>
+            </li>
+            <li class="nav-item" *ngIf="userRol==1">
+              <a class="nav-link" (click)="deleteAllDrinks()">Borrar todas las bebidas</a>
+            </li>
+            <li class="nav-item" *ngIf="userRol==1">
+              <a class="nav-link" (click)="goToPerfiles()">Ver perfiles</a>
+            </li>
+            <li class="nav-item" *ngIf="userLog">
+              <a class="nav-link" (click)="goToLogOut()">Salir</a>
+            </li>
+          </ul>
+          <form class="d-flex mt-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Que bebida quieres saber?" aria-label="Search">
+            <button class="btn btn-success" type="submit">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="container">
+  <div [ngClass]="(display)">
+    <div *ngIf="display=='drinks'">
+      <app-drinks #drinks [display]="display" [userLog]="userLog" [userRol]="userRol"></app-drinks>
+    </div>
+    <div *ngIf="(display=='showUser' || display=='logIn')">
+      <app-users [display]="display" [allUsers]="users" (statusChanged)="statusChangedHandler($event)"></app-users>
+    </div>
+    <div *ngIf="display=='Home'">
+      <div class="container" style="margin-top: 56px;">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+              <h1>Bienvenidos!</h1>
+              <h3>Drink App</h3>
+              <h5>El lugar con mayor informacion de bebidas</h5>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="display=='AboutUs'">
+      <div class="container" style="margin-top: 56px;">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+              <h1>Drink App</h1>
+              <p>Drink app es una plataforma para conocer las bebidas en el mundo</p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="display=='newDrink'||display=='editDrink'||display=='removeDrink'">
+      <app-drink [display]="display"></app-drink>
+    </div>
+    <div *ngIf="display=='newUser'||display=='editUser'||display=='removeUser'">
+      <app-user [display]="display"></app-user>
+    </div>
+  </div>
+</div>

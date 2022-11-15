@@ -35,7 +35,7 @@ drinkController.save=function(req,res){
          if(err){
             console.log("Error", err);
         }else{
-            console.log("Se creo una nueva bebida "+drink);
+            console.log("Se creo una nueva bebida "+ drink);
             res.json({"mensaje":"Se creo una nueva el bebida"});
         }
     })

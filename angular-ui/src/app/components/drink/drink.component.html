@@ -1,0 +1,36 @@
+<div class="container" style="margin-top: 56px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+        </div>
+    </div>
+    <div class="row justify-content-center" *ngIf="display=='newDrink'">
+        <div class="form-group" >
+            <form [formGroup]="drinkForm" (ngSubmit)="onSubmit()">
+                <label for="nombre">Nombre: </label>
+                <input id="nombre" type="text" class="form-control" formControlName="nombre" required>
+                <label for="tipo">Tipo: </label>
+                <input id="tipo" type="text" class="form-control" formControlName="tipo" required>
+                <label for="tamano">Tamaño: </label>
+                <input id="tamano" type="number" class="form-control" formControlName="tamano" required>
+                <label for="origen">Origen: </label>
+                <input id="origen" type="text" class="form-control" formControlName="origen" required>
+                <button type="submit" class="btn btn-dark" style="margin-top: 24px;" [disabled]="!drinkForm.valid">Guardar</button>
+              </form>
+        </div>
+    </div>
+    <div class="row justify-content-center" *ngIf="display=='editDrink'">
+        <div class="form-group" >
+            <form [formGroup]="drinkForm" (ngSubmit)="onSubmitEdit()">
+                <label for="nombre">Nombre: </label>
+                <input id="nombre" type="text" class="form-control" formControlName="nombre" required>
+                <label for="tipo">Tipo: </label>
+                <input id="tipo" type="text" class="form-control" formControlName="tipo" required>
+                <label for="tamano">Tamaño: </label>
+                <input id="tamano" type="number" class="form-control" formControlName="tamano" required>
+                <label for="origen">Origen: </label>
+                <input id="origen" type="text" class="form-control" formControlName="origen" required>
+                <button type="submit" class="btn btn-dark" style="margin-top: 24px;" [disabled]="!drinkForm.valid">Guardar</button>
+              </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container" style="margin-top: 56px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+        </div>
+    </div>
+    <div class="row justify-content-center" *ngIf="display=='newUser'">
+        <div class="form-group" >
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <label for="nombre">Nombre: </label>
+                <input id="nombre" type="text" class="form-control" formControlName="nombre" required>
+                <label for="apellido">Apellido: </label>
+                <input id="apellido" type="text" class="form-control" formControlName="apellido" required>
+                <label for="mail">Mail: </label>
+                <input id="mail" type="email" class="form-control" formControlName="mail" required>
+                <label for="pass">Contraseña: </label>
+                <input id="pass" type="password" class="form-control" formControlName="pass" required>
+                <label for="edad">Edad: </label>
+                <input id="edad" type="number" class="form-control" formControlName="edad" required>
+                <label for="rol">Rol: </label>
+                <input id="rol" type="number" class="form-control" formControlName="rol" required>
+                <button type="submit" class="btn btn-dark" style="margin-top: 24px;" [disabled]="!userForm.valid">Guardar</button>
+              </form>
+        </div>
+    </div>
+    <div class="row justify-content-center" *ngIf="display=='editUser'">
+        <div class="form-group" >
+            <form [formGroup]="userForm" (ngSubmit)="onSubmitEdit()">
+                <label for="nombre">Nombre: </label>
+                <input id="nombre" type="text" class="form-control" formControlName="nombre" required>
+                <label for="apellido">Apellido: </label>
+                <input id="apellido" type="text" class="form-control" formControlName="apellido" required>
+                <label for="mail">Mail: </label>
+                <input id="mail" type="email" class="form-control" formControlName="mail" required>
+                <label for="pass">Contraseña: </label>
+                <input id="pass" type="password" class="form-control" formControlName="pass" required>
+                <label for="edad">Edad: </label>
+                <input id="edad" type="number" class="form-control" formControlName="edad" required>
+                <label for="rol">Rol: </label>
+                <input id="rol" type="number" class="form-control" formControlName="rol" required>
+                <button type="submit" class="btn btn-dark" style="margin-top: 24px;" [disabled]="!userForm.valid">Guardar</button>
+              </form>
+        </div>
+    </div>
+</div>
